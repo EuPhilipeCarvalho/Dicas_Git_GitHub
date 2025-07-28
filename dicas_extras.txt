@@ -1,27 +1,22 @@
-1. Criar uma nova branch e já mudar para ela:
-git checkout -b nome-da-branch
 
-2. Listar todas as branches:
+1. Listar todas as branches:
 git branch          # Locais
 git branch -r       # Remotas
 git branch -a       # Todas (local + remoto)
 
-3. Mudar para outra branch:
-git checkout nome-da-branch
-
-4. Enviar uma branch nova pro GitHub:
+2. Enviar uma branch nova pro GitHub:
 git push origin nome-da-branch
 
-5. Atualizar sua branch com a branch principal (ex: main):
+3. Atualizar sua branch com a branch principal (ex: main):
 git checkout nome-da-sua-branch
 git pull origin main
 
-6. Excluir branch local:
+4. Excluir branch local:
 git branch -d nome-da-branch     # Só se já foi mesclada
 git branch -D nome-da-branch     # Força exclusão
 
-7. Excluir branch remota:
+5. Excluir branch remota:
 git push origin --delete nome-da-branch
 
-8. Renomear branch atual:
+6. Renomear branch atual:
 git branch -m novo-nome
