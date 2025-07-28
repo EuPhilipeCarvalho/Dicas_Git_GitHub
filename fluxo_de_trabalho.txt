@@ -165,3 +165,5 @@ OBS: O GIT IGNROE jah deveria ser criado logo no inicio do projeto
 			git commit -m "add o arquivo gitignore"
 		-> Dai envia para o repositorio remoto
 			git push
+			
+---- Mais dicas , em breve ...
