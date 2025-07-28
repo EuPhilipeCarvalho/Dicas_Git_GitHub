@@ -1,0 +1,167 @@
+1-> criar uma pasta 
+	-> dar um 'Git Bash here' < transforma num repositorio >
+	-> git innit < inicializa esse repositorio no git bash > 
+
+2 -> ADD ou criar os arquivos necessaries 
+
+3- > git status <verifica a situacao dos arquivos e repositorios>
+			<mostrando o que nao foi 'trackeado' ou jah foi>
+			<se ha commits nesse repositorio>
+			
+4-> Git add . (para 'trackear' todos os arquivos do repositorio)
+	git add "nome_do_arquivo" (trackear um arquivo pelo seu nome)
+	
+5 -> git status < para confirmar as alteracoes > 
+
+6-> git commit -m "nome da commit(normalmente o que foi feito nessa commit)"
+
+7-> git push < para enviar as alteracoes do repositorio local >
+		  < para o repositorio remoto (GitHub) >
+
+----- provavel erro por nao ter especifcado o endereco do repositorio remoto 
+
+8-> git remote add origin link_do_repositorio_git hub <para enderecar o>
+										<repositorio local>
+
+9-> git push 
+----- provavel erro por nao ter especifcado que branch vai ser 'lancada'
+
+10 -> git push --set-upstream origin main
+
+---- Modificando algum arquivo
+11-> git status <verifica mdoficacacoes>
+ 
+12-> git add . < trackear esse arquivo > 
+
+13-> git status
+
+14-> git commit -m "mensagem da commit"
+
+15-> git push 
+
+
+------------
+Como ver o historico das versoes do codigo 
+git reflog
+	< id commit ...
+	< id commit ...
+------------
+
+-------------
+Como navegar entre as versoes do codigo (commits) 
+.Se eu quiser corrigir um erro de alguma commmit
+git reset --hard iddacommit
+
+Voltar para a commit mais recente
+git reset --hard id da commit mais recente 
+-------------
+
+
+------ BRANCHS --------
+1-> Verificar branchs existentes : git branch
+2-> Criar uma nova branch: git checkout -b nomeparaessabranch 
+					< se for uma branch de atualizacao ou correcao > 
+					< um nome adequado seria : staging > 
+
+3 -> Alternando entre branchs: git checkout nomedabranchdesejada
+
+--- MERGES ----- 
+1-> Unir codigo de uma branch com a branch principal: 
+	-> Tenho que estar na branch que vai receber os 'dados'
+		< ou seja, git checkout nomedabranch> 
+	-> ANTES DE FAZER O MERGE tenho que garantir que esteja tudo com a ultima versao
+	-> git pull
+	-> git merge nomedabracnh_a_ser_puxada
+	-> git push <mandar para o repositorio local>
+	
+
+----------- SITUACAO -------------------
+-> Supondo que recebi uma nova responsabilidade de criar um sistema de logir
+-> Ou seja uma nova funcionalidade .
+
+	->Certificar que estou na branch main
+	-> atualizar de acordo com o remoto
+	 	< git pull > 
+	-> Criar uma nova uma branch 
+	< git branch -b sistema-de-login mome_da_branch_base_para_criar_a_nova> 
+	
+	->Criei um arquivo de texto rapidao e escrevi algo nele, para simular o meu
+	codigo de login
+	
+	-> git status 
+	-> git add.
+	-> git status 
+	-> git commit -m "sistema de login criado"
+	--- vamos voltar para a principal --- 
+	-> git checkout main
+	-> git pull 
+	-> git merge sistema-de-login 
+	-> git push
+	
+
+------ PULL REQUESTS ------ 
+A grosso modo eh uma autorizacao para mesclarmos nosso codigo com o principal 
+
+-- Facamos uma alteracao no codigo de login
+	-> git checkout sistema-de-login
+	-> altera o arquivo
+	-> git status e git add.
+	-> git commit -m "adicionando a idade no sistema de login" 
+	-> git status 
+-- Dessa vez vamos enviar direto para a nuvem sem trocar de branch no repositorio local
+	-> git push
+	
+--- Dentro do GITHUB:
+	-> Clico no pull request da branch recem add 
+	-> Faco um titulo e comentario (boa pratica ) 
+	-> Clico em Merge e Pull Request (No caso de mais pessoas nesse projeto
+	 essa permissao nao  seria minha ) 
+	 
+	-> Se eu fosse ordenado a fazer alguma alteracao era, soh eu commitar,
+		sem necessidade de fazer outro pull request
+		-> estar na branch que eu fiz o pull request
+		-> alterar o arquivo
+		-> git status gitd add. git status git commit -m "nomedaalteracao"
+		-> git psuh 
+		
+----------------------------------------------------		
+-- Se você quer incluir mudanças após o merge:
+Opção 1: Usar a mesma branch, se ela ainda existir:
+Se a branch não foi deletada no GitHub, você pode continuar fazendo commits nela.
+
+Então basta abrir um novo pull request a partir dessa branch com as novas alterações. O PR anterior não será reaberto automaticamente, e será necessário criar um PR novo. 
+community.atlassian.com
+
+Opção 2: Criar uma nova branch:
+A abordagem mais limpa e recomendada é criar uma nova branch a partir do main atualizado.
+
+Faça os novos commits na nova branch.
+
+Crie um novo pull request com essas alterações complementares.
+		
+--------------------------------------------
+
+
+
+----- GIT IGNORE ------ 
+OBS: O GIT IGNROE jah deveria ser criado logo no inicio do projeto
+-- Existem casos onde, nao vou querer enviar certos arquivos ao GitHub
+
+-> Rapidamente  criei uma pasta com nome 'segredos' e dentro de dela 
+   tem arquivos que eu nao quero que sejam expostos
+   
+	-> No terminal gitbash eu digito
+		-> touch .gitignore
+		< vai criar um .txt no meu repositorio local > 
+		-> dentro desse .txt eu escrevo a pasta ou arquivo que nao quero 
+			expor
+		-> no caso vai ser a pasta toda
+			< segredos/ > 
+		-> verifico com git status 
+		   < o certo eh aparecer soh o .gitignore> 
+		-> Depois adicionamos o gitigonre nesse repositorio
+			git add . 
+		-> e commita
+			git commit -m "add o arquivo gitignore"
+		-> Dai envia para o repositorio remoto
+			git push
