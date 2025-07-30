@@ -20,3 +20,7 @@ git push origin --delete nome-da-branch
 
 6. Renomear branch atual:
 git branch -m novo-nome
+
+7.Remover alguma arquivo ou pasta do controle de versão:
+git rm -r --cached nome-arquivo
+git rm -r --cached nome-pasta/
