@@ -24,3 +24,27 @@ git branch -m novo-nome
 7.Remover algum arquivo ou pasta do controle de versão:
 git rm -r --cached nome-arquivo
 git rm -r --cached nome-pasta/
+
+8.Clonar um Repositório:
+git clone https://github.com/usuario/repositorio.git
+
+9.Criar uma Nova Branch:
+git checkout -b nome-da-nova-branch
+
+10.Excluir um Repositório Git Local:
+rm -rf .git
+
+11. Verificar o Histórico de Commits:
+git log
+
+12. Reverter um Commit:
+
+-> Para desfazer um commit local (não enviado ao remoto):
+git reset --hard <commit-id>
+
+13.
+->Verificar as Configurações de Git:
+git config --list
+
+
+
