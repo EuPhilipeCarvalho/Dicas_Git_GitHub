@@ -38,7 +38,6 @@ rm -rf .git
 git log
 
 12. Reverter um Commit:
-
 -> Para desfazer um commit local (não enviado ao remoto):
 git reset --hard <commit-id>
 
